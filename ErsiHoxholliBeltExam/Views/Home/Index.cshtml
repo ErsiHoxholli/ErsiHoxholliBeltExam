@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4 mt-5 mb-5">Hobbies</h1>    
+</div>
+
+<div class="row">
+    <div class="col-sm-8">
+        <table class="table">
+            <thead>
+                <tr>
+                <th>Hobbie</th>
+                <th>Enthusiast</th>               
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.hobbies)
+                {
+                    <tr>
+                        <td>
+                           <a href="ShowHobbie/@item.HobbieId">@item.Name</a> 
+                        </td>
+                        <td>
+                           @item.Enthusiasts.Count
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>    
+</div>
+<div class="row mt-5">
+    <div class="col-sm-4">
+        <a href="/HobbieAdd">Add A Hobby!</a>
+    </div>
+</div>

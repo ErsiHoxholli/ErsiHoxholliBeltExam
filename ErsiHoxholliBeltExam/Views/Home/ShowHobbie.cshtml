@@ -1,0 +1,57 @@
+<h2 class="text-left">@ViewBag.showHobbie.Name</h2>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Description : </h3>
+            </div>
+            <div class="col-sm-8">
+                @ViewBag.showHobbie.Description
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2 offset-sm-8">
+        <a href="/Edit/Hobbie/@ViewBag.showHobbie.HobbieId">Edit Hobbie</a>
+    </div>
+</div>
+
+
+<div class="row mt-5 mb-5">
+    <div class="col-sm-6">
+        <table class="table">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Proficency</th>               
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.showHobbie.Enthusiasts)
+                {
+                    <tr>
+                        <td>
+                           @item.Person.FirstName 
+                        </td>
+                        <td>
+                           @item.Tipi
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-3 offset-sm-2 d-flex flex-column">
+        <h3>Become an Enthusiast!</h3> 
+        <form action="/CreateEnthusiast/@ViewBag.showHobbie.HobbieId" method="post">
+        <select name="type">
+            <option value="Novice">Novice</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Expert">Expert</option>
+        </select>
+        <button class="btn btn-primary" type="submit">submit</button>
+        </form>
+    </div>
+</div>
